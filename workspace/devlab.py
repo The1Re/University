@@ -1,2 +1,3 @@
-n = list(map(int,input().split()))
-print(' '.join(n.sort()))
+n = input().split()
+n.sort()
+print(' '.join(n))

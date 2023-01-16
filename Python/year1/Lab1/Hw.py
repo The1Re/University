@@ -1,2 +1,5 @@
-x,y = input("Enter x and y : ").split()
-print(x+'-'+y+'^'+x,'=',str(int(x)-int(y)**int(x)))
+workDays = 5
+workHours = 7.5
+payRate = 38.55
+weeklyPay = workDays*workHours*payRate
+print("Weekly Pay =",weeklyPay)
