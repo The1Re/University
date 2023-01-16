@@ -5,7 +5,7 @@ from tkinter import *
 
 FONT = ('ariel',10,'normal')
 
-def window_main():\
+def window_main():
 
     def random_password():
         input1.config(state='normal')
