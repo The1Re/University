@@ -3,7 +3,7 @@ def lab1():
         n = int(input('Enter n : '))
         if n<0 :
             break
-        print(n%100)
+        print(n%10)
     print('End of program')
 
 def lab2():
