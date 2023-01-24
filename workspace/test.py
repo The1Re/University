@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import speech_recognition as sr
 import pyttsx3
 import webbrowser
@@ -70,3 +71,20 @@ while True:
     elif "how are you" in statement:
         speak("I'm doing great. I wish I can serve you best as your AI personal assistant")
     time.sleep(3)
+=======
+n = 1
+while (n!=3):
+    print ("(1) Compute A + B ")
+    print("(2) Compute A - B ")
+    print("Exit")
+    n = int(input("Enter choice :"))
+    if (n==2):
+        x,y = map(int,input("Enter 2 numbers : ").split())
+        z = x-y
+        print(x,"-",y,"=",z)
+    elif(n==1):
+        x,y = map(int,input("Enter 2 numbers : ").split())
+        z = x+y
+        print(x,"+",y,"=",z)
+    
+>>>>>>> 0e254385b3427be183a7f9b51496789d443c5b9c
