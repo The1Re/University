@@ -40,10 +40,10 @@ def lab4():
 def lab4_2():
     n = int(input('Enter number : '))
     i = 2
-    ans = ''
+    ans = []
     while(n!=1):
         if n%i == 0:
-            ans += str(i)
+            ans.append(str(i))
             n/=i
         else:
             i+=1
@@ -87,4 +87,4 @@ def lab5():
         print()
     print('Thank you for using our service.')
 
-lab1()
+lab4_2()
