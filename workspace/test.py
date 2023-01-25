@@ -1,5 +1,9 @@
-a = int(input())
-b = a+543
-print(b)
-print(sum(map(int," ".join(str(a)).split())))
-print(sum(map(int," ".join(str(b)).split())))
+i =0 
+sum =0 
+while(i<10):
+    i+=1
+    if i%3!=0 :
+        continue
+    sum += i
+
+print(sum)
