@@ -28,7 +28,7 @@ int sol1_lcm(int a,int b)
 int sol2_gcd(int a,int b)       //use short divide
 {
     int sum=1,i=2;
-    while(!(isprime(a) || isprime(b)) && (a%i!=0 && b%i!=0))
+    while(i<=a)
     {
         if(a%i==0 && b%i==0){
             a/=i;
@@ -44,7 +44,7 @@ int sol2_gcd(int a,int b)       //use short divide
 int sol2_lcm(int a,int b)
 {
     int sum=1,i=2;
-    while(!(isprime(a) || isprime(b)))
+    while(i<=a)
     {
         if(a%i==0 && b%i==0){
             a/=i;
@@ -69,19 +69,33 @@ int sol3_lcm(int a,int b)
     return (a*b)/sol3_gcd(a,b);
 }
 
+void swap_min_to_max(int *a,int *b)
+{
+    int temp;
+    if(b<a){
+        temp = *a;
+        *a = *b;
+        *b = temp;
+    }
+}
+
 int main()
 {
     int a,b;
-    printf("Input a,b : ");  //only a<b
+    printf("Input a,b : "); //can solve a>b and b>a
     scanf("%d %d",&a,&b);
-    printf("use loop :\n");
+
+    swap_min_to_max(&a,&b);
+
+    printf("\nuse loop :\n");
     printf("gcd sol1 = %d\n",sol1_gcd(a,b));
     printf("lcm sol1 = %d\n",sol1_lcm(a,b));
-    printf("use short divide :\n");
+    printf("\nuse short divide :\n");
     printf("gcd sol2 = %d\n",sol2_gcd(a,b));
     printf("lcm sol2 = %d\n",sol2_lcm(a,b));
-    printf("use Euclidean algorithm :\n");
+    printf("\nuse Euclidean algorithm :\n");
     printf("gcd sol3 = %d\n",sol3_gcd(a,b));
-    printf("lcm sol3 = %d\n",sol3_lcm(a,b));
+    printf("lcm sol3 = %d\n\n",sol3_lcm(a,b));
+
     return 0;
 }
