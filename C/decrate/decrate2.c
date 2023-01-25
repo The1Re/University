@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void convert_inttostr(char *str,int n)
+char *convert_inttostr(char *str,int n)
 {
     char num[]="0123456789",chartemp;
     int temp;
@@ -19,6 +19,7 @@ void convert_inttostr(char *str,int n)
         }
         n/=10;
     }
+    return str;
 }
 
 void factor(int x)
@@ -57,13 +58,42 @@ void factorinpower(int x)
     printf("\n");
 }
 
+void factorinpower2(int x)
+{
+    int i=2;
+    char ans[20]="";
+
+    char buffer[20][20];
+    int j=0;
+
+    while(x!=1)
+    {
+        if(x%i==0){
+            strcat(buffer[j],convert_inttostr(ans,i));
+            x/=i;
+            if(x!=1 && x%i==0)
+                strcat(buffer[j],".");
+            ans[0]='\0';
+        }else{
+            i++;
+            if(x%i==0)
+                j++;
+        }
+    }
+    for(int i=0;i<=j;i++)
+    {
+        puts(buffer[i]);
+    }
+    printf("\n");
+}
+
 int main()
 {
     int a;
     printf("Input a : ");
     scanf("%d",&a);
     factor(a);
-    factorinpower(a);
+    factorinpower2(a);
 
     return 0;
 }
