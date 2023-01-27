@@ -48,6 +48,7 @@ int main()
     int a;
     printf("Input a : ");
     scanf("%d",&a);
+    
     factor(a);
     factorinpower(a);
 
