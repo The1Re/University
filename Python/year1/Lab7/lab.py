@@ -16,8 +16,9 @@ def lab2():
         else:
             ans = f'{i*i/(2*i-1)+10:0.2f}'
             ans = f'{float(ans):n}'
-        print(f'x = {i}\tf({i}) = {ans}')
+        print(f'x = {i}\t\tf({i}) = {ans}')
         i+=0.5
+    print('------------------------------')
             
 def lab3():
     n = int(input('Enter N : '))
@@ -63,6 +64,7 @@ def lab5():
     while True:
         type_customer = input('Type of customer (s for student,o for other,q for quit) : ')
         if type_customer == 'q' : break
+        elif type_customer != 's' and type_customer != 'o': continue
 
         tk_type = int(input('Ticket type (1 for single trip, 2 for one-day trips,3 for one-month trips) : '))
         if tk_type <1 or tk_type>3: continue
@@ -87,4 +89,4 @@ def lab5():
         print()
     print('Thank you for using our service.')
 
-lab4_2()
+lab5()

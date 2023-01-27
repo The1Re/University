@@ -1,9 +1,9 @@
-while True:
-    a,b = input().split()
-    a = int(a)
-    b = int(b)
-    if b==0:
-        break
-    elif (a>0 and b>0) or (a<0 and b<0):
-        print(a*b)
-    
+x = 1
+y = 1
+z = 0
+for i in range(1,10):
+    z = x+y
+    x = y+1
+    if x%3 != 0:
+        y = 2*x
+    print(f'{i} : \t{x}\t\t{y}\t\t{z}')

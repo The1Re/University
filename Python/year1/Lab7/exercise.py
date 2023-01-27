@@ -1,5 +1,10 @@
-n = int(input('Enter n : '))
-for i in range(n):
-    num = int(input(f'Enter number{i+1}: '))
-    if num%3==0 :
-        print('Divisble by 3')
+a = 100
+b = 1
+c = 5
+while(a>c):
+    b+=1
+    if a%b!=0 :
+        continue
+    a/=b
+    c+=5
+    print('a =',a,'b =',b,'c =',c)
