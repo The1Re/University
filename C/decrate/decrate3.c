@@ -33,6 +33,6 @@ int main()
     
     swap_min_to_max(&a,&b);
     isRelativelyPrime(a,b) ? printf("-> True") : printf("-> False");
-
+    
     return 0;
 }
