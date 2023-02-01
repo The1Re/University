@@ -22,11 +22,17 @@ int main(void)
     while(true)
     {
         showboard();
-        checkwinner();
+        if(checkwinner()){
+            printf("Player%d is winner!\n",turnplayer);
+            break;
+        }
         turnplayer = turnplayer%2+1;
-        printf("Player%d. please enter your go %c : ",turnplayer,turnplayer == 1 ? player1 : player2);
-        scanf("%d",&get);
-
+        do{
+            printf("Player%d. please enter your go %c : ",turnplayer,turnplayer == 1 ? player1 : player2);
+            scanf("%d",&get);
+            if(checkboard(get)) printf("Error cannot choice %d try again!\n",get);
+        }while(checkboard(get));
+        changeboard(get,turnplayer);
     }    
     return 0;
 }
@@ -44,27 +50,33 @@ void showboard()
 
 bool checkwinner()
 {
-    for(int i=0;i<9;i+=3)   //check liner
-    {
-        if(board[i]==board[i+1]&&board[i]==board[i+2])
-            return true;
+    if(board[1]==board[4]&&board[1]==board[8])
+        return true;
+    else if(board[2]==board[4]&&board[2]==board[6])
+        return true;
+    else{
+        for(int i=0;i<9;i+=3)   //check liner
+        {
+            if(board[i]==board[i+1]&&board[i]==board[i+2])
+                return true;
+        }
+        for(int i=0;i<3;i++)    //check horizol
+        {
+            if(board[i]==board[i+3]&&board[i]==board[i+6])
+                return true;
+        }
     }
-    for(int i=0;i<3;i++)    //check horizol
-    {
-        if(board[i]==board[i+3]&&board[i]==board[i+6])
-            return true;
-    }
-    
+    return false;  //not have winner
 }
 
 bool checkboard(int get)
 {
     if(board[get-1] == 'x' || board[get-1] == 'o')
-        return false;
-    return true;
+        return true;
+    return false;
 }
 
-void changeboard(int get)
+void changeboard(int get,int turnplayer)
 {
-
+    board[get-1] = turnplayer == 1 ? player1 : player2;
 }
