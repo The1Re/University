@@ -91,17 +91,3 @@ def lab6_2():
         print(f'{strdata} is a palindrome.')
     else:
         print(f'{strdata} is not a palindrome.')
-
-def lab6_3():
-    data = []
-    data = input('Please enter characters : ').split()
-    print('Number of characters is',len(data))
-    revdata = []
-    for i in range(len(data)-1,-1,-1):
-        revdata.append(data[i])
-    ans = ' not ' if data != revdata else ' '
-    strdata = ''
-    for i in range(len(data)):
-        strdata += data[i]
-    print(f'{strdata} is{ans}a palindrome.')
-lab6_3()

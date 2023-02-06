@@ -50,7 +50,7 @@ void showboard()
 
 bool checkwinner()
 {
-    if(board[1]==board[4]&&board[1]==board[8])
+    if(board[0]==board[4]&&board[0]==board[8])
         return true;
     else if(board[2]==board[4]&&board[2]==board[6])
         return true;
