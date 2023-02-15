@@ -3,7 +3,6 @@ def hw1():
     print('First Name :',data[0])
     print('Middle Name :',data[1])
     print('Last Name :',data[2])
-    print(type(data))
 
 def hw2():
     msg = input('Enter string : ')
