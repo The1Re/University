@@ -38,5 +38,3 @@ def lab6():
     msg = input('Enter sentence : ')
     print('Character count =',len(msg))
     print('Word count =',len(msg.split()))
-
-print(ord('l'),ord('m'))

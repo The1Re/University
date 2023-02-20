@@ -6,12 +6,7 @@ def hw1():
 
 def hw2():
     msg = input('Enter string : ')
-    print('string : ',end='')
-    for i in range(len(msg)):
-        if msg[i] == ' ':
-            print('-',end='')
-        else:
-            print(msg[i],end='')
+    print('string :',msg.replace(' ','-'))
 
 def hw3():
     a = input('Enter string A : ')
@@ -22,4 +17,4 @@ def hw3():
     else:
         print(b+' is not contained in '+a)
 
-hw1()
+hw2()
