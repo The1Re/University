@@ -8,6 +8,12 @@ def lab1():
         print()
         i = i+1
 
+def lab1_2():
+    for i in range(1,4):
+        for j in range(5):
+            print(i,end='')
+        print()
+
 def lab2():
     i=1
     while(i<=4):
@@ -30,29 +36,26 @@ def lab3():
 def lab4():
     n = int(input('N = '))
     for i in range(1,n+1):
-        print(' '*(n-i),end='')
-        print('*'*(2*i-1))
+        for j in range(n-i):
+            print(end=' ')
+        for j in range(2*i-1):
+            print(end='*')
+        print()
 
 def lab5():
     while True:
-        x,y = map(int,input('Please enter two numbers : ').split())
-        if x==1 or x==0 or y==1 or y==0 :
+        x,y = input('Please enter two numbers : ').split()
+        x,y = int(x),int(y)
+        if 0 in [x,y] or 1 in [x,y] :
             print('No need for calculation. Bye...')
             break
         elif x<0 or y<0:
             print('Invalid input!')
-            continue
         else:
-            if x<y:
-                min = x
-            else:
-                min = y
-            
             checkcoprime = True
-            for i in range(2,min):
+            for i in range(2,min(x,y)):
                 if x%i==0 and y%i==0 :
                     checkcoprime = False
-        
             if checkcoprime :
                 print(f'{x} and {y} are coprime') 
             else: 
@@ -61,14 +64,9 @@ def lab5():
 def lab6():
     box = [6,3,8,5,4]
     for i in range(len(box)):
-        print(f'[{i+1}]','*'*box[i])
-
-def lab6_2():
-    box = [6,3,8,5,4]
-    for i in range(len(box)):
-        print(f'[{i+1}]',end=' ')
+        print('['+str(i+1)+']',end='')
         for j in range(box[i]):
-            print('*',end='')
+            print(end='*')
         print()
 
 def lab7():
@@ -89,4 +87,4 @@ def lab7_2():
                 print(f'a = {a},\tb = {int(b)},\tc = {c}')
                 print(f'a = {int(b)},\tb = {a},\tc = {c}')
                 break
-lab7_2()
+lab6()

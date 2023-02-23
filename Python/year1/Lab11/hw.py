@@ -1,7 +1,9 @@
 def hw1():
     n = int(input('N : '))
     for i in range(n):
-        print('*'*(2*i+1))
+        for j in range(2*i+1):
+            print(end='*')
+        print()
 
 def hw2():
     n = int(input('Please enter n : '))
@@ -15,9 +17,8 @@ def hw2():
 def hw2_2():
     n = int(input('Please enter n : '))
     for i in range(2,6):
-        j=i
-        while j<=n:
+        for j in range(i,n+1,i):
             print(j,end=' ')
-            j+=i
         print()
+
 hw2_2()
