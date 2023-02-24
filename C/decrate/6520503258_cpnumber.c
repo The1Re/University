@@ -1,15 +1,18 @@
+//นายคเณศ อรชุนเลิศไมตรี 6520503258
 #include <stdio.h>
 
 void factor(int x)
 {
     int i=2;
+    printf("%d=",x);
+
     while(x!=1)
     {
         if(x%i==0){
             printf("%d",i);
             x/=i;
             if(x!=1)
-                printf(" x ");
+                printf("*");
         }else{
             i++;
         }
@@ -21,6 +24,7 @@ void factorinpower(int x)
 {
     int i=2;
     int powcount=0;
+    printf("%d=",x);
 
     while(x!=1)
     {
@@ -32,7 +36,7 @@ void factorinpower(int x)
             if(x%i!=0){
                 printf("%d",powcount);
                 if(x!=1)
-                    printf(" x ");
+                    printf("*");
             }
         }else{
             powcount=0;
@@ -45,12 +49,12 @@ void factorinpower(int x)
 
 int main()
 {
-    int a;
-    printf("Input a : ");
-    scanf("%d",&a);
+    int n;
+    printf("Enter n : ");
+    scanf("%d",&n);
     
-    factor(a);
-    factorinpower(a);
+    factor(n);
+    factorinpower(n);
 
     return 0;
 }

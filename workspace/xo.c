@@ -14,6 +14,7 @@ void showboard();
 void changeboard();
 bool checkboard();
 bool checkwinner();
+bool checkfullboard();
 
 int main(void)
 {
@@ -22,8 +23,8 @@ int main(void)
     while(true)
     {
         showboard();
-        if(checkwinner()){
-            printf("Player%d is winner!\n",turnplayer);
+        if(checkwinner() || checkfullboard()){
+            checkwinner() ? printf("Player%d is winner!\n",turnplayer) : printf("This game draw"); 
             break;
         }
         turnplayer = turnplayer%2+1;
@@ -67,6 +68,16 @@ bool checkwinner()
         }
     }
     return false;  //not have winner
+}
+
+bool checkfullboard()
+{
+    for(int i=0;i<9;i++)
+    {
+        if(board[i]!='x' && board[i]!='o')
+            return false;
+    }
+    return true;
 }
 
 bool checkboard(int get)
