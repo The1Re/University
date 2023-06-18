@@ -137,7 +137,7 @@ int main()
     // num4();
     // num5();
     //num6();
-    // num7();
-    num8();
+    num7();
+    // num8();
 }
 
