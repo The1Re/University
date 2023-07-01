@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "Program",
+      "request": "launch",
+      "mainClass": "OOP.Lesson4.Program",
+      "projectName": "university_7935a041"
+    },
+    {
       "type": "lldb",
       "request": "launch",
       "name": "Debug",
