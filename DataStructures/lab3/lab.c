@@ -76,13 +76,10 @@ int main()
       A[i] = rand()%30 +1;
 
     DisplayArray(A, MAX);
-    double start_time = clock();
     //SelectionSort(A, MAX);              //Call Sorting Function
     //InsertionSort(A, MAX);
     BubbleSort(A, MAX);
-    double end_time = clock();
     DisplayArray(A, MAX);
     //printf("Numcompare = %d\tNumswap = %d\n",numCompare,numSwap);
-    printf("Time : %lf\n",(end_time-start_time)/CLOCKS_PER_SEC);
     return 0;
 }

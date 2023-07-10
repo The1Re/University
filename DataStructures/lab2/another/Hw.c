@@ -9,14 +9,14 @@ int main(void)
 {
     int n=3200;
     double start_time, end_time;
-
+    srand((unsigned) time(NULL));
     printf("Algorithm 1 :\n");
     while (n < 250000)
     {
         //init array
         int arr[n];
         for (int i=0; i<n; i++){
-            arr[i] = rand();
+            arr[i] = rand()%1000+1;
         }
 
         //start test function
