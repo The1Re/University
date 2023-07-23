@@ -17,12 +17,10 @@ void doublyMarker()
     while (ptr != NULL)
     {
         ptr->prev = preptr;
-        tail = ptr;
         preptr = ptr;
         ptr = ptr->next;
     }
-    //ptr->prev = preptr;
-    
+    tail = preptr;
 }
 
 void show_attail()
