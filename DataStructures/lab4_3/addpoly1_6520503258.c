@@ -67,7 +67,7 @@ int main()
     //similar to practice
     for(i=0;i<n;i++)
     {
-        struct polynode *new_node = createNode(i, a1[i]);
+        new_node = createNode(i, a1[i]);
         new_node->next = head1;
         head1 = new_node;
     }
@@ -76,7 +76,7 @@ int main()
 
     for(i=0;i<n;i++)
     {
-        struct polynode *new_node = createNode(i, a2[i]);
+        new_node = createNode(i, a2[i]);
         new_node->next = head2;
         head2 = new_node;
     }
