@@ -92,38 +92,27 @@ int main()
 
     while(p1!=NULL && p2!=NULL)
     {
-        // switch (compareExp(p1->exp,p2->exp))
-        // {
-        //     case 0:
-        //         struct polynode *new_node = createNode(p1->exp, p1->coef+p2->coef);
-        //         if (head3 == NULL){
-        //             new_node->next = head3;
-        //             head3 = new_node;
-        //         }else{
-        //             struct polynode *ptr = head3;
-        //             while (ptr->next != NULL)
-        //                 ptr = ptr->next;
-        //             ptr->next = new_node;
-        //         }
-        //         break;
-        //     case 1:
-        //         break;
-        //     case -1:
-        //         break;
-        // }//end switch
-        struct polynode *new_node = createNode(p1->exp, p1->coef+p2->coef);
-        if (head3 == NULL){
-            new_node->next = head3;
-            head3 = new_node;
-        }else{
-            struct polynode *ptr = head3;
-            while (ptr->next != NULL)
-                ptr = ptr->next;
-            ptr->next = new_node;
-        }
+        struct polynode *new_node = (struct polynode *)malloc(sizeof(struct polynode));
+        switch (compareExp(p1->exp,p2->exp))
+        {
+            case 0:
+                new_node = createNode(p1->exp, p1->coef+p2->coef);
+                if (head3 == NULL){
+                    head3 = new_node;
+                }else{
+                    p3->next = new_node;
+                    p3 = p3->next;
+                }
+                p1 = p1->next;
+                p2 = p2->next;
+                break;
+            case 1:
+                break;
+            case -1:
+                break;
+        }//end switch
+        
         //create new node and add it in the resulted polynomial
-        p1 = p1->next;
-        p2 = p2->next;
     }//end while
 
     //check whether p1 is not null, Loop for creating new node and add it in the resulted polynomial

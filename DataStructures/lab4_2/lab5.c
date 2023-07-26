@@ -11,39 +11,38 @@ typedef struct node
 Node *head = NULL;
 Node *tail = NULL;
 
-void New_linkedlist(char data)
+Node *CreateNode(char data)
 {
     Node *new_node = (Node *)malloc(sizeof(Node));
     new_node->data = data;
-    new_node->next = head;
+    new_node->next = NULL;
     new_node->prev = NULL;
+    return new_node;
+}
+void New_linkedlist(char data)
+{
+    Node *new_node = CreateNode(data);
+    new_node->next = head;
     tail = new_node;
     head = new_node;
 }
 void Add_head(char data)
 {
-    Node *new_node = (Node *)malloc(sizeof(Node));
-    new_node->data = data;
+    Node *new_node = CreateNode(data);
     new_node->next = head;
-    new_node->prev = NULL;
     head->prev = new_node;
     head = new_node;
 }
 void Add_tail(char data)
 {
-    Node *new_node = (Node *)malloc(sizeof(Node));
-    new_node->data = data;
-    new_node->next = NULL;
+    Node *new_node = CreateNode(data);
     new_node->prev = tail;
     tail->next = new_node;
     tail = new_node;
 }
 void Insert_node(int ref, char data)
 {
-    Node *new_node = (Node *)malloc(sizeof(Node));
-    new_node->data = data;
-    new_node->next = NULL;
-    new_node->prev = NULL;
+    Node *new_node = CreateNode(data);
     Node *preptr = head;
     Node *ptr = head->next;
     int index = 1;

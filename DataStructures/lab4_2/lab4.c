@@ -43,7 +43,14 @@ void show_athead()
     }
     printf("\n");
 }
-
+Node *CreateNode(int data)
+{
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    new_node->data = data;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+    return new_node;
+}
 
 int main(void)
 {
@@ -54,10 +61,8 @@ int main(void)
     //create singly linked list
     for (int i=0; i<n; i++)
     {
-        Node *new_node = (Node *)malloc(sizeof(Node));
-        new_node->data = n-i;
+        Node *new_node = CreateNode(n-i);
         new_node->next = head;
-        new_node->prev = NULL;
         head = new_node; 
     }
     doublyMarker();
