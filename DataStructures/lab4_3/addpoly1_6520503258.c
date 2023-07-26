@@ -59,10 +59,8 @@ int main()
     struct polynode *new_node;
 
     int n=5,i;
-    // int a1[] ={6,2,3,8,0};
-    // int a2[] ={3,18,0,0,23};
-    int a1[] = {1,2,3,4,5};
-    int a2[] = {-1,-2,-3,-4,5};
+    int a1[] ={6,2,3,8,0};
+    int a2[] ={-3,18,0,0,23};
     int ex,co;
 
     //create list in decreasing order add at the head
@@ -92,34 +90,60 @@ int main()
 
     while(p1!=NULL && p2!=NULL)
     {
-        struct polynode *new_node = (struct polynode *)malloc(sizeof(struct polynode));
         switch (compareExp(p1->exp,p2->exp))
         {
             case 0:
-                new_node = createNode(p1->exp, p1->coef+p2->coef);
                 if (head3 == NULL){
-                    head3 = new_node;
-                }else{
-                    p3->next = new_node;
-                    p3 = p3->next;
+                    head3 = createNode(p1->exp, p1->coef + p2->coef);
+                    p3 = head3;
                 }
+                else
+                    p3->next = createNode(p1->exp, p1->coef + p2->coef);
+
                 p1 = p1->next;
                 p2 = p2->next;
                 break;
             case 1:
+                if (head3 == NULL){
+                    head3 = createNode(p1->exp, p1->coef);
+                    p3 = head3;
+                }
+                else
+                    p3->next = createNode(p1->exp, p1->coef);
+
+                p1 = p1->next;
                 break;
             case -1:
+                if (head3 == NULL){
+                    head3 = createNode(p2->exp, p2->coef);
+                    p3 = head3;
+                }
+                else
+                    p3->next = createNode(p2->exp, p2->coef);
+
+                p2 = p2->next;
                 break;
         }//end switch
-        
+        if (p3->next != NULL)
+            p3 = p3->next;
         //create new node and add it in the resulted polynomial
+
     }//end while
 
     //check whether p1 is not null, Loop for creating new node and add it in the resulted polynomial
-
+    while (p1 != NULL)
+    {
+        p3->next = p1;
+        p1 = p1->next;
+    }
+    
 
    //check whether p2 is not null, Loop for creating new node and add it in the resulted polynomial
-
+    while (p2 != NULL)
+    {
+        p3->next = p2;
+        p2 = p2->next;
+    }
 
     // Display resultant List
     printf("\nAdded polynomial: ");

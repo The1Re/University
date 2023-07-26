@@ -66,15 +66,15 @@ void Insert_node(int ref, char data)
 void remove_head()
 {
     Node *ptr = head;
-    head->next->prev = NULL;
     head = head->next;
+    head->prev = NULL;
     free(ptr);
 }
 void remove_tail()
 {
     Node *ptr = tail;
-    tail->prev->next = NULL;
     tail = tail->prev;
+    tail->next = NULL;
     free(ptr);
 }
 void remove_atindex(int ref)
