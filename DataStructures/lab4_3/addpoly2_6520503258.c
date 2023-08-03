@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+
 struct polynode
 {
 	int coef;
@@ -9,7 +10,6 @@ struct polynode
 	struct polynode *next;
 };
 struct polynode *head1 = NULL, *head2 = NULL, *head3 = NULL;
-
 
 void displayPoly(struct polynode *head)
 {
