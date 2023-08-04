@@ -1,20 +1,10 @@
-package lab2;
-public class Product{
-    protected String productName;
-    protected int price;
-    protected int volumn;
-    protected int weight;
-    protected boolean isVolumn = false;
-    protected static int amount = 0;
-    public Product(String name, int price){
-        this.productName = name;
-        this.price = price;
+public abstract class Product {
+    protected String name;
+
+    public String getName(){
+        return name;
     }
-    public void setVolumn(int volumn){
-        this.volumn = volumn;
-        isVolumn = true;
-    }
-    public void setWeight(int weight){
-        this.weight = weight;
-    }
+    public abstract double getPrice();
+    public abstract int getAmount();
+    public abstract String getDetail();
 }
