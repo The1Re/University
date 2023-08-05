@@ -22,7 +22,6 @@ int main(void)
     int r[] = {100, 90, 50, 40, 10, 9, 5, 4, 1};
     char rm[][3] = {"C","XC","L","XL","X","IX","V","IV","I"};
     int length_r = sizeof(r)/sizeof(int);
-    int length_rm = sizeof(rm[length_r])/sizeof(char) - 1;
     scanf("%d", &n);
     for (int i=1; i<=n; i++)
     {
@@ -30,7 +29,7 @@ int main(void)
         for (int j=0; j<length_r && data != 0; j++)
         {
             if (j%2 != 0 && data == r[j]){
-                for (int k=0; k<length_rm; k++){
+                for (int k=0; k<strlen(rm[j]); k++){
                     hash_table[hash(rm[j][k])]++;
                 }
             }else{
