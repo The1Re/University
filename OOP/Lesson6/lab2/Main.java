@@ -1,6 +1,5 @@
-package lab2;
-public class Program{
-    public static void main(String[] args){
+public class Main {
+    public static void main(String[] args) {
         Milk p1 = new Milk(150);
         p1.setVolumn(250);
         Sugar p2 = new Sugar(50);

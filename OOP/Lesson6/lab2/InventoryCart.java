@@ -1,28 +1,28 @@
-package lab2;
-
 public class InventoryCart {
-    private Product[] product;
+    private Product[] products;
     private static int index = 0;
-    public InventoryCart(int size){
-        product = new Product[size];
+
+    public InventoryCart(int capacity){
+        products = new Product[capacity];
     }
-    public void addProduct(Product pd){
-        this.product[index] = pd;
-        index++;
+
+    public void addProduct(Product product){
+        for (int i=0; i<index; i++)
+        {
+            if (product.name == products[i].name)
+                return;
+        }
+        products[index++] = product;
     }
-    public Product getProduct(){
-        return this.product[--index];
+    public Product getProductAt(int i){
+        return products[i];
     }
     public Product[] getAllProduct(){
-        Product[] getAllPd = new Product[index];
-        // for (int i=0; i < index; i++){
-        //     if (this.product[i] == null)
-        //         break;
-        //     getAllPd[i] = this.product[i];
-        // }
-        while (index!=0){
-            getAllPd[index-1] = getProduct();
+        Product[] temp = new Product[index];
+        for (int i=0; i<index; i++)
+        {
+            temp[i] = products[i];
         }
-        return getAllPd;
+        return temp;
     }
 }
