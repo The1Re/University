@@ -58,9 +58,9 @@ int main()
     struct polynode *p1 = NULL, *p2 = NULL, *p3 = NULL;
     struct polynode *new_node;
 
-    int n=5,i;
-    int a1[] ={6,2,3,8,0};
-    int a2[] ={-3,18,0,0,23};
+    int n=15,i;
+    int a1[] ={1,0,0,0,0,0,0,0,2,0,0,0,0,0,3};
+    int a2[] ={0,0,0,0,0,0,10,0,0,0,-3,0,0,0,8};
     int ex,co;
 
     //create list in decreasing order add at the head
