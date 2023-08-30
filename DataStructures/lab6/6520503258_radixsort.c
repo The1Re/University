@@ -58,4 +58,5 @@ int main()
     printf("\nNumber after sorting\n");
     for (int i=0; i<n; i++)
         printf("%d ", num[i]);
+    return 0;
 }
