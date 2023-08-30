@@ -35,7 +35,7 @@ int main()
     //Sorting with Radix sort
     for (int digitpos=1; digitpos<=5; digitpos++)
     {
-        int buffer[BASE][20] = {0};
+        int buffer[BASE][n];
         for (int i=0 ;i<n; i++)
         {
             int digit = findDigit(num[i], digitpos);
