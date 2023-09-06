@@ -42,7 +42,11 @@ int main()
         }else if (!strcmp(option, "UNDO")){
             push(temp_text, &tTop, pop(current_text, &cTop));
         }else if (!strcmp(option, "REDO")){
+<<<<<<< HEAD
+            if (tTop == NULL)
+=======
             if (isEmpty(tTop))
+>>>>>>> refs/remotes/origin/main
                 continue;
             push(current_text, &cTop, pop(temp_text, &tTop));
         }else if (!strcmp(option, "READ")){
