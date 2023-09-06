@@ -9,7 +9,6 @@ typedef struct node{
     struct node *next;
 }Node;
 Node *head = NULL;
-int count = 0;
 
 bool isEmpty()
 {
@@ -28,7 +27,6 @@ int pop()
         head = head->next;
         ptr->next = NULL;
         free(ptr);
-        count--;
         return data;
     }
 }
@@ -39,7 +37,6 @@ void push(int data)
     new_node->data = data;
     new_node->next = head;
     head = new_node;
-    count++;
 }
 
 void resetNode()
@@ -71,7 +68,7 @@ int main(void)
 
     //Convert to Upper case
     for (int i=0; i<strlen(msg); i++)
-        msg[i] = (isupper(msg[i])) ? msg[i] : toupper(msg[i]);
+        msg[i] = toupper(msg[i]);
     
     //Find mid string
     end = strlen(msg);

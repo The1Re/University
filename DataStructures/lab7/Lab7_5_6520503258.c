@@ -42,6 +42,8 @@ int main()
         }else if (!strcmp(option, "UNDO")){
             push(temp_text, &tTop, pop(current_text, &cTop));
         }else if (!strcmp(option, "REDO")){
+            if (tTop == NULL)
+                continue;
             push(current_text, &cTop, pop(temp_text, &tTop));
         }else if (!strcmp(option, "READ")){
             if (cTop == -1)
