@@ -24,6 +24,7 @@ int main()
     for (i=10; i>=1; i/=2)
         enqueue(i);
     display();
+    int x = 0;
     return 0;
 }
 

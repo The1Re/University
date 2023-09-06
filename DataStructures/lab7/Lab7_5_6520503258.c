@@ -10,7 +10,7 @@ bool isEmpty(int top)
 
 void push(char arr[], int *top, char value)
 {
-    *top = *top + 1;
+    *top += 1;
     arr[*top] = value;
 }
 
@@ -21,7 +21,7 @@ char pop(char arr[], int *top)
     }
 
     char value = arr[*top];
-    *top = *top - 1;
+    *top -= 1;
     return value;
 }
 
@@ -42,7 +42,11 @@ int main()
         }else if (!strcmp(option, "UNDO")){
             push(temp_text, &tTop, pop(current_text, &cTop));
         }else if (!strcmp(option, "REDO")){
+<<<<<<< HEAD
             if (tTop == NULL)
+=======
+            if (isEmpty(tTop))
+>>>>>>> refs/remotes/origin/main
                 continue;
             push(current_text, &cTop, pop(temp_text, &tTop));
         }else if (!strcmp(option, "READ")){
