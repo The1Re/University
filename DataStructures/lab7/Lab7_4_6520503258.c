@@ -50,10 +50,10 @@ void resetNode()
 bool isPalindrome(char msg[],int start, int end)
 {
     resetNode();
-    int i, length = (start+end)/2;
-    for (i=start; i<length; i++)
+    int i, length = end-start, mid = (start+end)/2;
+    for (i=start; i<mid; i++)
         push(msg[i]);
-    if ((end-start)%2) i++;
+    if (length%2) i++;
     while (i < end)
     {
         if (msg[i] != pop())
@@ -71,14 +71,15 @@ int main(void)
 
     //Convert to Upper case
     for (int i=0; i<strlen(msg); i++)
-        msg[i] = (isupper(msg[i])) ? msg[i] : toupper(msg[i]);
+        msg[i] = toupper(msg[i]);
     
-    //Find mid string
+    //Find end,mid string position
     end = strlen(msg);
     half = end/2;
     
+    //check palindrome
     if (isPalindrome(msg, start, end)){
-        if (isPalindrome(msg, start, half) && isPalindrome(msg, strlen(msg)%2 ? ++half : half, end)){
+        if (isPalindrome(msg, start, half) && isPalindrome(msg, end%2 ? ++half : half, end)){
             printf("Double Palindrome");
         }else{
             printf("Palindrome");
