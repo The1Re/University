@@ -60,7 +60,6 @@ struct Treenode *postfixToTree(char prefix[])
     for (int i=0; i<strlen(prefix); i++)
     {
         if (prefix[i] == ' '){
-            printf("num = %d\n", num);
             if (num != 0)
                 push(createNode(num));
             num = 0;
@@ -82,7 +81,7 @@ void infix(struct Treenode *r)
     if (r == NULL)
         return;
     else{
-        if (!strchr(opt, (char)(r->data)))
+        if (r->data > 255 || !strchr(opt, (char)(r->data)))
             printf("%d", r->data);
         else{
             printf("(");
