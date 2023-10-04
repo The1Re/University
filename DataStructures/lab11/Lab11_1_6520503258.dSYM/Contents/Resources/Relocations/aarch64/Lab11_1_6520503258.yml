@@ -1,0 +1,17 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/goyhathai/Documents/Code/university/DataStructures/lab11/Lab11_1_6520503258'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _swap, symObjAddr: 0x0, symBinAddr: 0x1000039A8, symSize: 0x3C }
+  - { offsetInCU: 0x3F, offset: 0x3F, size: 0x8, addend: 0x0, symName: _H, symObjAddr: 0x5A4, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x6E, offset: 0x6E, size: 0x8, addend: 0x0, symName: _current_index, symObjAddr: 0x5F4, symBinAddr: 0x100008050, symSize: 0x0 }
+  - { offsetInCU: 0x83, offset: 0x83, size: 0x8, addend: 0x0, symName: _isMinHeap, symObjAddr: 0x1246, symBinAddr: 0x100008054, symSize: 0x0 }
+  - { offsetInCU: 0x9A, offset: 0x9A, size: 0x8, addend: 0x0, symName: _swap, symObjAddr: 0x0, symBinAddr: 0x1000039A8, symSize: 0x3C }
+  - { offsetInCU: 0xDA, offset: 0xDA, size: 0x8, addend: 0x0, symName: _insert, symObjAddr: 0x3C, symBinAddr: 0x1000039E4, symSize: 0x98 }
+  - { offsetInCU: 0x128, offset: 0x128, size: 0x8, addend: 0x0, symName: _leftChild, symObjAddr: 0xD4, symBinAddr: 0x100003A7C, symSize: 0x20 }
+  - { offsetInCU: 0x150, offset: 0x150, size: 0x8, addend: 0x0, symName: _rightChild, symObjAddr: 0xF4, symBinAddr: 0x100003A9C, symSize: 0x20 }
+  - { offsetInCU: 0x178, offset: 0x178, size: 0x8, addend: 0x0, symName: _heapify, symObjAddr: 0x114, symBinAddr: 0x100003ABC, symSize: 0x1E4 }
+  - { offsetInCU: 0x1AA, offset: 0x1AA, size: 0x8, addend: 0x0, symName: _Heap_BottomUp, symObjAddr: 0x2F8, symBinAddr: 0x100003CA0, symSize: 0x84 }
+  - { offsetInCU: 0x1DC, offset: 0x1DC, size: 0x8, addend: 0x0, symName: _showHeap, symObjAddr: 0x37C, symBinAddr: 0x100003D24, symSize: 0x158 }
+  - { offsetInCU: 0x246, offset: 0x246, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x4D4, symBinAddr: 0x100003E7C, symSize: 0xD0 }
+...
