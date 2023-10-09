@@ -1,19 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
+#define MAXSTACK 10
 
-struct Treenode {
-    int data, ht;
-    struct Treenode *leftChild, *rightChild, *mother;
-};
-struct Treenode *Root;
-struct Treenode *stack[10];
+typedef struct AVLTree{
+    char data;
+    int ht;
+    struct AVLTree *rightChild, *leftChild, *mother;
+}AVL;
+AVL *Root = NULL;
+AVL *stack[MAXSTACK];
 int top = -1;
-bool isAVL = true;
 
-struct Treenode *createNode(int data)
+AVL *createNode(char data)
 {
-    struct Treenode *new_node = malloc(sizeof(struct Treenode));
+    AVL *new_node = malloc(sizeof(AVL));
     new_node->data = data;
     new_node->ht = 1;
     new_node->leftChild = NULL;
@@ -22,19 +25,17 @@ struct Treenode *createNode(int data)
     return new_node;
 }
 
-void push(struct Treenode *node)
+void push(AVL *t)
 {
-    stack[++top] = node;
+    stack[++top] = t;
 }
-
-struct Treenode *pop()
+AVL *pop()
 {
     if (top == -1)
         return NULL;
     return stack[top--];
 }
-
-struct Treenode *peek()
+AVL *peek()
 {
     if (top == -1)
         return NULL;
@@ -45,33 +46,21 @@ int max(int x, int y)
 {
     return x > y ? x : y;
 }
-
-int height(struct Treenode *t)
+int height(AVL *t)
 {
     if (t == NULL)
         return 0;
     return t->ht;
 }
-
-
-int getBf(struct Treenode *t)
+int getBf(AVL *current)
 {
-    return height(t->leftChild) - height(t->rightChild);
+    return height(current->leftChild) - height(current->rightChild);
 }
 
-void inorder(struct Treenode *r)
+AVL *leftRotate(AVL *x)
 {
-    if (r == NULL)
-        return;
-    inorder(r->leftChild);
-    printf("%d(Bf=%d)", r->data, getBf(r));
-    inorder(r->rightChild);
-}
-
-struct Treenode *leftRotate(struct Treenode *x)
-{
-    struct Treenode *y = x->rightChild;
-    struct Treenode *z = y->leftChild;
+    AVL *y = x->rightChild;
+    AVL *z = y->leftChild;
     y->leftChild = x;
     x->rightChild = z;
 
@@ -84,11 +73,10 @@ struct Treenode *leftRotate(struct Treenode *x)
     y->ht = 1 + max(height(y->leftChild), height(y->rightChild));
     return y;
 }
-
-struct Treenode *rightRotate(struct Treenode *x)
+AVL *rightRotate(AVL *x)
 {
-    struct Treenode *y = x->leftChild;
-    struct Treenode *z = y->rightChild;
+    AVL *y = x->leftChild;
+    AVL *z = y->rightChild;
     y->rightChild = x;
     x->leftChild = z;
 
@@ -99,26 +87,21 @@ struct Treenode *rightRotate(struct Treenode *x)
 
     x->ht = 1 + max(height(x->leftChild), height(x->rightChild));
     y->ht = 1 + max(height(y->leftChild), height(y->rightChild));
-    
     return y;
 }
-
-void Rotate(struct Treenode *criticalNode, int bf)
+void Rotate(AVL *criticalNode, int bf)
 {
     int bf_child;
-    struct Treenode *child = NULL;
-    struct Treenode *parent = criticalNode->mother;
+    AVL *child = NULL;
+    AVL *parent = criticalNode->mother;
     if (bf >= 2){
         child = (criticalNode)->leftChild;
         bf_child = getBf(child);
         
         if (bf_child < 0){
-            printf("Left-Right Double Rotate\n");
-            printf("Left Rotate at Node : %d\n", child->data);
             (criticalNode)->leftChild = leftRotate(child);
         }
 
-        printf("Right Rotate at Node : %d\n", (criticalNode)->data);
         if (criticalNode == Root)
             Root = rightRotate(criticalNode);
         else{
@@ -133,12 +116,9 @@ void Rotate(struct Treenode *criticalNode, int bf)
         bf_child = getBf(child);
 
         if (bf_child > 0){
-            printf("Right-Left Double Rotate\n");
-            printf("Right Rotate at Node : %d\n", child->data);
             (criticalNode)->rightChild = rightRotate(child);
         }
 
-        printf("Left Rotate at Node : %d\n", (criticalNode)->data);
         if (criticalNode == Root)
             Root = leftRotate(criticalNode);
         else{
@@ -150,11 +130,13 @@ void Rotate(struct Treenode *criticalNode, int bf)
     }
 }
 
-void Tree_insert(int data)
+void Tree_insert(char data)
 {
-    struct Treenode *ptr = Root, *preptr = NULL, *new_node = createNode(data);
+    AVL *ptr = Root, *preptr = NULL, *new_node = createNode(data);
     while (ptr != NULL)
     {
+        if (ptr->data == data)
+            return;
         preptr = ptr;
         push(preptr);
         if (data < ptr->data)
@@ -182,21 +164,65 @@ void Tree_insert(int data)
             Rotate(ptr, bf);
         }
         
+    }    
+}
+
+void inorder(AVL *t)
+{
+    if (t == NULL)
+        return;
+    inorder(t->leftChild);
+    printf("%c", t->data, getBf(t));
+    inorder(t->rightChild);
+}
+void preorder(AVL *t)
+{
+    if (t == NULL)
+        return;
+    printf("%c", t->data);
+    preorder(t->leftChild);
+    preorder(t->rightChild);
+}
+void postorder(AVL *t)
+{
+    if (t == NULL)
+        return;
+    postorder(t->leftChild);
+    postorder(t->rightChild);
+    printf("%c", t->data);
+}
+int find(AVL *t, char key)
+{
+    int level = 0;
+    while (t != NULL)
+    {
+        if (t->data == key)
+            return level;   
+        if (t->data < key)
+            t = t->rightChild;
+        else
+            t = t->leftChild;
+        level++;
     }
-
-
-        
+    return -1;
 }
 
 int main(void)
 {
-    int num;
-    do {
-        printf("insert node : ");
-        scanf("%d", &num);
-        if (num >= 0)
-            Tree_insert(num);
-    }while (num >= 0);
-    inorder(Root);
+    char input[30];
+    scanf("%s", input);
+    for (int i=0; i<strlen(input); i++)
+    {
+        if (isalpha(input[i]))
+            Tree_insert(input[i]);
+        else if (input[i] == '1')
+            printf("%d", find(Root, input[++i]));
+        else if (input[i] == '2')
+            preorder(Root);
+        else if (input[i] == '3')
+            inorder(Root);
+        else
+            postorder(Root);
+    }
     return 0;
 }

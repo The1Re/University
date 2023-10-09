@@ -17,4 +17,5 @@ int main()
         p = strstr(p,"happy");
     }
     printf("%s",msg);
+    return 0;
 }

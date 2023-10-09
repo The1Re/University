@@ -2,7 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
-#include <math.h>
 
 #define MAX_STRING 30
 #define MAX_STACK 10
@@ -80,6 +79,14 @@ void infixToPostfix(char input[], char output[])
     output[index] = '\0';
 }
 
+int power(int x, int y)
+{
+    int sum = 1;
+    for (int i=0; i<y; i++)
+        sum *= x;
+    return sum;
+}
+
 int operation(char opt, int x, int y)
 {
     switch(opt)
@@ -88,7 +95,7 @@ int operation(char opt, int x, int y)
         case '-':return x-y;
         case '*':return x*y;
         case '/':return x/y;
-        case '^':return pow(x,y);
+        case '^':return power(x,y);
         default:
             return -1;
     }
