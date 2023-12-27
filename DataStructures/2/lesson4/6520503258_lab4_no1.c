@@ -1,18 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-typedef struct Node{
+typedef struct Activity{
     int id, s, f;
-}Node;
+}Activity;
 
-void merge(Node arr[], int leftArr, int mid, int rightArr)
+void merge(Activity arr[], int leftArr, int mid, int rightArr)
 {
-    int i, j, k;
+     int i, j, k;
     int n1 = mid - leftArr + 1;
     int n2 = rightArr - mid;
  
     // Create temp arrays
-    Node L[n1], R[n2];
+    Activity L[n1], R[n2];
  
     // Copy data to temp arrays L[] and R[]
     for (i = 0; i < n1; i++)
@@ -52,7 +51,7 @@ void merge(Node arr[], int leftArr, int mid, int rightArr)
         k++;
     }
 }
-void mergeSort(Node arr[], int leftArr, int rightArr)
+void mergeSort(Activity arr[], int leftArr, int rightArr)
 {
     if (leftArr < rightArr){
         int mid = (leftArr + rightArr) / 2;
@@ -62,18 +61,18 @@ void mergeSort(Node arr[], int leftArr, int rightArr)
     }
 }
 
-void printGreedyActivitySelect(Node A[], int size)
+void ActivitySelection(Activity A[], int size)
 {
     mergeSort(A, 0, size-1);
 
-    int j = 0;
-    printf("Activities are selected n : %d ", A[j].id);
+    int i = 0;
+    printf("Activities are selected n : %d ", A[i].id);
 
-    for (int i=1; i<size; i++)
+    for (int j=1; j<size; j++)
     {
-        if (A[i].s >= A[j].f){
-            printf("%d ", A[i].id);
-            j = i;
+        if (A[j].s >= A[i].f){
+            printf("%d ", A[j].id);
+            i = j;
         }
     }
 }
@@ -81,10 +80,10 @@ void printGreedyActivitySelect(Node A[], int size)
 int main(void)
 {
     int n;
-    printf("Enter number of Activity(n) = ");
+    printf("Input number of Activity (n) = ");
     scanf("%d", &n);
 
-    Node A[n];
+    Activity A[n];
     for (int i=0; i<n; i++)
     {
         A[i].id = i+1;
@@ -92,7 +91,7 @@ int main(void)
         scanf("%d %d", &A[i].s, &A[i].f);
     }
 
-    printGreedyActivitySelect(A, n);
-    
+    ActivitySelection(A, n);
+
     return 0;
 }
