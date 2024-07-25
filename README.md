@@ -1,2 +1,2 @@
 # university
-project in university
+for study 
